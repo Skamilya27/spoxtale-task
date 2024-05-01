@@ -8,11 +8,7 @@ const app = express();
 const PORT = 8080;
 
 app.use(
-  cors({
-    origin: "https://spoxtale-task-frontend.vercel.app",
-    methods: ["POST", "GET"],
-    credentials: true,
-  })
+  cors()
 );
 
 app.use(bodyParser.json());
