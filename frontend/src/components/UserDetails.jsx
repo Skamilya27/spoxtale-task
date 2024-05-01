@@ -33,7 +33,7 @@ const UserDetails = () => {
             className="h-full w-full rounded-full object-cover"
           />
         </div>
-        <div className="rounded-md w-2/4 bg-green-400 h-[27vh] mt-8">
+        <div className="rounded-md w-2/4 bg-[#D9D9D9] h-[27vh] mt-8">
           <a target="_blank" rel="noopener noreferrer" href={websiteURL}>
             <img
               src={user.websiteQRCode}
@@ -43,7 +43,7 @@ const UserDetails = () => {
           <h6 className="font-semibold text-center">Website</h6>
           </a>
         </div>
-        <div className="rounded-md w-2/4 bg-green-400 h-[27vh] mt-12">
+        <div className="rounded-md w-2/4 bg-[#D9D9D9] h-[27vh] mt-12">
           <a target="_blank" rel="noopener noreferrer" href={instaURL}>
             <img
               src={user.socialMediaQRCode}
