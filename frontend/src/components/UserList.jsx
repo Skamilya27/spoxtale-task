@@ -7,7 +7,7 @@ const UserList = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080")
+      .get("https://spoxtale-task.vercel.app")
       .then((res) => {
         // console.log(res.data);
         setUsers(res.data);

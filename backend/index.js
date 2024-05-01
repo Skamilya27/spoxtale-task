@@ -9,7 +9,8 @@ const PORT = 8080;
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://spoxtale-task-ljgq.vercel.app",
+    methods: ["POST", "GET"],
     credentials: true,
   })
 );
