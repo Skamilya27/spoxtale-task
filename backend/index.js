@@ -1,10 +1,55 @@
 import express from "express";
+import bodyParser from "body-parser";
+import qrCode from "qrcode"
+import fs from "fs";
+import cors from "cors";
 
 const app = express();
 const PORT = 8080;
 
+app.use(
+    cors({
+        origin: 'http://localhost:5173',
+        credentials: true,
+    })
+)
+
+app.use(bodyParser.json());
+
+const userData = JSON.parse(fs.readFileSync("./userData.json", "utf-8"));
+
+
+
 app.get("/", (req, res) => {
-    res.send("Server is ready");
+    res.status(200).send(userData);
+})
+
+
+app.get("/:username", async (req, res) => {
+    try{
+        const username = req.params.username.replace(".", "");
+        const user = userData.find((user) => user.emailID.split("@")[0].replace(".", "") === username);
+
+        if(!user) {
+            return res.status(404).json({error: 'User not found'});
+        }
+
+        const urls = [user.website, user.socialmedia];
+        const qrCodes = await Promise.all(urls.map(async (url) => {
+            return await qrCode.toDataURL(url); 
+        }));
+        
+        res.json({
+            name: user.name,
+            websiteQRCode: qrCodes[0],
+            socialMediaQRCode: qrCodes[1],
+        })
+
+    }
+    catch(err) {
+        console.error("Something went wrong while generating QR codes: ", err);
+        res.status(500).json({error: 'Internal server error'})
+    } 
 })
 
 
