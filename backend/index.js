@@ -7,18 +7,14 @@ import cors from "cors";
 const app = express();
 const PORT = 8080;
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || origin === "https://spoxtale-task-frontend.vercel.app") {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-};
+app.use(
+  cors({
+    origin: "*",
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 
-app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 const userData = JSON.parse(fs.readFileSync("./userData.json", "utf-8"));
