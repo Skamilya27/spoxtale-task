@@ -9,9 +9,11 @@ const UserDetails = () => {
   const [websiteURL, setWebsiteUrl] = useState("");
   const [instaURL, setInstaURL] = useState("");
 
+  axios.defaults.withCredentials = true;
+
   useEffect(() => {
     axios
-      .get(`https://spoxtale-task.vercel.app/${username}`)
+      .get(`https://spoxtale-task-backend.vercel.app/${username}`)
       .then((res) => {
         console.log(res.data.urls[0]);
         setUser(res.data);

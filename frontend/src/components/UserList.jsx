@@ -5,9 +5,11 @@ import UserCard from "./UserCard";
 const UserList = () => {
   const [users, setUsers] = useState([]);
 
+  axios.defaults.withCredentials = true;
+
   useEffect(() => {
     axios
-      .get("https://spoxtale-task.vercel.app")
+      .get("https://spoxtale-task-backend.vercel.app")
       .then((res) => {
         // console.log(res.data);
         setUsers(res.data);
