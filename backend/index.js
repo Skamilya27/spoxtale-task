@@ -8,7 +8,10 @@ const app = express();
 const PORT = 8080;
 
 app.use(
-  cors()
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
 );
 
 app.use(bodyParser.json());

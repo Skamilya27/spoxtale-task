@@ -13,7 +13,7 @@ const UserDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`https://spoxtale-task-backend.vercel.app/${username}`)
+      .get(`http://localhost:8080/${username}`)
       .then((res) => {
         console.log(res.data.urls[0]);
         setUser(res.data);
@@ -28,7 +28,7 @@ const UserDetails = () => {
   return (
     <div className="flex items-center w-full justify-center min-h-screen rounded">
       <div className="w-full sm:w-1/4 bg-[#FAF1E4] h-screen flex items-center justify-center flex-col">
-        <div className="w-[40%] h-1/5 h-12 rounded-full mt-1">
+        <div className="w-[40%] h-1/5 rounded-full mt-1">
           <img
             src="https://images.unsplash.com/photo-1589254065909-b7086229d08c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="profile photo"
